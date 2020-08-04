@@ -1,4 +1,4 @@
-## Tamagotchi for Recruiters
+## CV 4 the Future
 
 This project works as my CV. It will present random facts about me to Recruiters/Players that can will feed me with answers.
 
