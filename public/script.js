@@ -96,7 +96,7 @@ const load = (up = true) => {
     answers.push([{ id: interaction[step].id, answer: up ? "up" : "down" }]);
 
     if (step === interaction.length - 1) {
-      fetch("https://luiscv.glitch.me/answer", {
+      fetch("https://cv4thefuture.glitch.me/answer", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
