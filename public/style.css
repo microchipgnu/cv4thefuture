@@ -1,0 +1,124 @@
+html,
+body {
+  /*  height: 100%;*/
+}
+
+body {
+  font-family: "Bangers", cursive;
+}
+
+.model {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(#ffffff, #ada996);
+}
+
+/* This keeps child nodes hidden while the element loads */
+:not(:defined) > * {
+  display: none;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  color: black;
+  text-align: center;
+  display: flex;
+}
+
+.header * {
+  flex: 1;
+}
+
+.header .title {
+  color: #00BFFF;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+  display: flex;
+}
+
+.card {
+  flex: 1;
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.row {
+  flex: 1;
+  display: flex;
+}
+
+.row div {
+  flex: 1;
+  flex-flow: column wrap;
+}
+
+.button {
+  flex: 1;
+}
+
+@keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-flicker {
+  -webkit-animation: flickerAnimation 3s infinite;
+  -moz-animation: flickerAnimation 3s infinite;
+  -o-animation: flickerAnimation 3s infinite;
+  animation: flickerAnimation 3s infinite;
+}

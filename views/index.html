@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bangers&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <!--<link rel="stylesheet" type="text/css" href="style.css" />-->
+    <!-- Import the component -->
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"
+    ></script>
+  </head>
+  <body>
+    <model-viewer
+      id="avatar"
+      shadow-intensity="1"
+      ar
+      autoplay
+      animation-name="Dance"
+      src="https://modelviewer.dev/shared-assets/models/RobotExpressive.glb"
+      camera-controls
+      class="model"
+    >
+      <div class="header">
+        <div>
+          <h2 class="title animate-flicker">
+            CV for the 21st century
+          </h2>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="card" style="padding-bottom: 40px;">
+          <div class="row">
+            <div>
+              <div><h1 id="title"></h1></div>
+              <div><p id="description"></p></div>
+            </div>
+          </div>
+          <div class="row">
+            <div id="downButton" class="button" onclick="down()">
+              <image
+                style="width:50px; height: 50px; flex: 1"
+                src="https://cdn.glitch.com/e23d95d3-f91c-4201-bbaa-2a0339444e71%2Fthumbs_down.svg?v=1594301291159"
+              />
+            </div>
+            <div id="upButton" class="button" onclick="up()">
+              <image
+                style="width:50px; height: 50px; flex: 1"
+                src="https://cdn.glitch.com/e23d95d3-f91c-4201-bbaa-2a0339444e71%2Fthumbs_up.svg?v=1594301291159"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </model-viewer>
+  </body>
+  <script src="session.js"></script>
+  <script src="facts.js"></script>
+  <script src="script.js"></script>
+</html>
