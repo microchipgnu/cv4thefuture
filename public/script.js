@@ -1,5 +1,7 @@
 // model: https://s3.amazonaws.com/readyplayerbaker/avatars_baked/947910ed-f13e-44d8-bba5-873d3f738c9c.glb
 
+const base_url = "https://cv4thefuture.glitch.me";
+
 let session = newSession();
 let step = 0;
 
@@ -14,7 +16,7 @@ const typeColors = {
   goodbye: "linear-gradient(#ffffff, #ada996)",
   personal: "linear-gradient(#ffffff, #ada996)",
   achievements: "linear-gradient(#ffffff, #ada996)",
-  work: "linear-gradient(#ffffff, #ada996)"
+  work: "linear-gradient(#ffffff, #ada996)",
 };
 
 const interaction = [
@@ -23,7 +25,7 @@ const interaction = [
     title: "Hey, I'm Luís! ",
     type: "greeting",
     description: "To learn more about me, press thumbs up.",
-    animation: "Wave"
+    animation: "Wave",
   },
   {
     id: 1,
@@ -33,7 +35,7 @@ const interaction = [
     link: "",
     media: "image",
     media_url: "",
-    animation: "Running"
+    animation: "Running",
   },
   {
     id: 2,
@@ -42,7 +44,7 @@ const interaction = [
     type: "work",
     link: "",
     media: "",
-    animation: "Dance"
+    animation: "Dance",
   },
   {
     id: 3,
@@ -52,7 +54,7 @@ const interaction = [
     type: "achievements",
     link: "",
     media: "",
-    animation: "Jump"
+    animation: "Jump",
   },
   {
     id: 4,
@@ -61,27 +63,18 @@ const interaction = [
     type: "personal",
     link: "",
     media: "",
-    animation: "Dance"
+    animation: "Dance",
   },
   {
     id: 5,
     title: "That's all.",
     type: "goodbye",
     description: "Thanks for your honest feedback.",
-    animation: "ThumbsUp"
-  }
+    animation: "ThumbsUp",
+  },
 ];
 
 let answers = [];
-
-/*fetch("https://luiscv.glitch.me/answer", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify(session)
-}) 
-*/
 
 const up = () => {
   load(true);
@@ -91,18 +84,20 @@ const down = () => {
   load(false);
 };
 
-const load = (up = true) => {
+const load = async (up = true) => {
   if (step < interaction.length) {
     answers.push([{ id: interaction[step].id, answer: up ? "up" : "down" }]);
 
     if (step === interaction.length - 1) {
-      fetch("https://cv4thefuture.glitch.me/answer", {
+      await fetch(`${base_url}/answer`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ session, answers })
+        body: JSON.stringify({ session, answers }),
       });
+
+      window.location.href = `${base_url}/cv`;
     }
 
     const data = interaction[step];
