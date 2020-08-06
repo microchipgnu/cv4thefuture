@@ -96,8 +96,9 @@ const load = async (up = true) => {
         },
         body: JSON.stringify({ session, answers }),
       });
+      
+      window.location.href = `${base_url}/cv`;
 
-      window.href.location = `${base_url}/cv`;
     }
 
     const data = interaction[step];
