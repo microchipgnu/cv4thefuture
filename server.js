@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const { request, GraphQLClient } = require("graphql-request");
 
 const { GetAnswers, InsertAnswers } = require("./queries");
+const { response } = require("express");
 
 const app = express();
 
@@ -14,8 +15,8 @@ const client = new GraphQLClient(process.env.HASURA_ENDPOINT, {
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
-    "x-hasura-admin-secret": process.env.HASURA_TOKEN
-  }
+    "x-hasura-admin-secret": process.env.HASURA_TOKEN,
+  },
 });
 
 // make all the files in 'public' available
@@ -31,7 +32,6 @@ app.get("/studio", (request, response) => {
   response.sendFile(__dirname + "/views/studio.html");
 });
 
-
 app.get("/facts", (request, response) => {
   response.json([
     {
@@ -40,7 +40,7 @@ app.get("/facts", (request, response) => {
       type: "personal",
       link: "",
       media: "",
-      animation: ""
+      animation: "",
     },
     {
       title: "I have built multiple applications.",
@@ -48,7 +48,7 @@ app.get("/facts", (request, response) => {
       type: "work",
       link: "",
       media: "",
-      animation: ""
+      animation: "",
     },
     {
       title:
@@ -57,7 +57,7 @@ app.get("/facts", (request, response) => {
       type: "achievements",
       link: "",
       media: "",
-      animation: ""
+      animation: "",
     },
     {
       title: "I practiced ballet for 7 years. Went to the national school.",
@@ -65,8 +65,8 @@ app.get("/facts", (request, response) => {
       type: "personal",
       link: "",
       media: "",
-      animation: ""
-    }
+      animation: "",
+    },
   ]);
 });
 
@@ -79,11 +79,11 @@ app.post("/answer", async (request, response) => {
 
   const toInsert = {
     answer: { ...request.body },
-    ip
+    ip,
   };
 
   try {
-    await client.request(InsertAnswers, toInsert).then(data => {
+    await client.request(InsertAnswers, toInsert).then((data) => {
       response.json({});
     });
   } catch (e) {
@@ -91,11 +91,15 @@ app.post("/answer", async (request, response) => {
   }
 });
 
+app.get("/cv", (request, response) => {
+  response.download("luis-microchipgnu-cv.pdf");
+});
+
 app.get("/answers", async (request, response) => {
   try {
-    await client.request(GetAnswers).then(data => {
+    await client.request(GetAnswers).then((data) => {
       let toReturn = {
-        totalAnswers: data.answers.length
+        totalAnswers: data.answers.length,
       };
 
       for (const groupAnswers of data.answers) {
@@ -108,8 +112,8 @@ app.get("/answers", async (request, response) => {
               ...toReturn,
               [id]: {
                 up: 10,
-                down: 10
-              }
+                down: 10,
+              },
             };
           }
         }
