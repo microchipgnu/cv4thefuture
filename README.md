@@ -9,3 +9,8 @@ This project works as a way to collect feedback. It will present random facts ab
 - Avatar is cross-platform.
 - n facts about me.
 - Record answers for research purposes.
+
+
+## Todo
+
+- [ ] Use readyplayer.me full body avatar 
